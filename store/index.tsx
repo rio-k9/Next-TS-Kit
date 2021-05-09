@@ -1,18 +1,24 @@
 import { createContext, useContext } from 'react'
 import { UiStore } from './ui'
 import { TrackStore } from './track'
+import { IRootStore } from '../interfaces';
 
-let store
+let store: undefined | IRootStore
 
-class RootStore {
+class RootStore implements IRootStore {
   uiStore;
   trackStore
   constructor() {
     this.uiStore = new UiStore()
     this.trackStore = new TrackStore()
   }
+  hydrate = (data) => {
+    if (data.uiStore) this.uiStore.hydrate(data.uiStore)
+    if (data.trackStore) this.trackStore.hydrate(data.trackStore)
+  }
+
 }
-export const StoreContext = createContext()
+export const StoreContext = createContext(null)
 
 export function useStore() {
   const context = useContext(StoreContext)
@@ -23,20 +29,17 @@ export function useStore() {
   return context
 }
 
-export function StoreProvider({ children, initialState: initialData }) {
+export function StoreProvider({ children, initialData }) {
   const store = initializeStore(initialData)
 
   return <StoreContext.Provider value={store}>{children}</StoreContext.Provider>
 }
 
 function initializeStore(initialData = null) {
-  const _store = store ?? new RootStore()
-
+  const _store: IRootStore = store ?? new RootStore()
   // If your page has Next.js data fetching methods that use a Mobx store, it will
   // get hydrated here, check `pages/ssg.js` and `pages/ssr.js` for more details
-  if (initialData) {
-    _store.hydrate(initialData)
-  }
+  if (initialData) _store.hydrate(initialData)
   // For SSG and SSR always create a new store
   if (typeof window === 'undefined') return _store
   // Create the store once in the client

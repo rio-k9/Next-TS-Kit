@@ -1,9 +1,10 @@
 import { action, makeAutoObservable } from 'mobx'
 import { enableStaticRendering } from 'mobx-react-lite'
+import { ITrackStore } from '../interfaces'
 
 enableStaticRendering(typeof window === 'undefined')
 
-export class UiStore {
+export class TrackStore implements ITrackStore {
   input = ''
 
   constructor() {
@@ -17,8 +18,8 @@ export class UiStore {
 
   @action hydrate = (data) => {
     if (!data) return
-
-    this.lastUpdate = data.lastUpdate !== null ? data.lastUpdate : Date.now()
-    this.light = !!data.light
+    Object.keys(data).forEach(k => {
+      this[k] = data[k]
+    })
   }
 }
