@@ -13,5 +13,10 @@ export interface IUiStore {
 export interface IRootStore {
   uiStore: IUiStore,
   trackStore: ITrackStore,
-  hydrate: Function
+  hydrate: Function,
+}
+
+export interface IHydrate {
+  uiStore: IUiStore | null,
+  trackStore: ITrackStore | null
 }

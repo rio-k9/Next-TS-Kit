@@ -1,10 +1,12 @@
-import { observer } from 'mobx-react-lite'
-import { useStore } from '../store'
-import Link from 'next/link'
+import { observer } from 'mobx-react-lite';
+import { useStore } from '../store';
+import Link from 'next/link';
+import { FC } from 'react';
+import { IRootStore } from '../interfaces';
 
-const About = observer(function Page(props) {
+const About: FC<Object> = observer(function Page(props) {
   // use store from the store context
-  const rootStore = useStore()
+  const rootStore: IRootStore = useStore()
 
   return (
     <div>

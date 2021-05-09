@@ -1,7 +1,9 @@
-import { createContext, useContext } from 'react'
+import { Context, createContext, ReactNode, useContext } from 'react'
 import { UiStore } from './ui'
 import { TrackStore } from './track'
-import { IRootStore } from '../interfaces';
+import { IHydrate, IRootStore } from '../interfaces';
+import { NextPage } from 'next';
+import { AppProps } from 'next/dist/next-server/lib/router/router';
 
 let store: undefined | IRootStore
 
@@ -12,16 +14,16 @@ class RootStore implements IRootStore {
     this.uiStore = new UiStore()
     this.trackStore = new TrackStore()
   }
-  hydrate = (data) => {
+  hydrate = (data: IHydrate) => {
     if (data.uiStore) this.uiStore.hydrate(data.uiStore)
     if (data.trackStore) this.trackStore.hydrate(data.trackStore)
   }
 
 }
-export const StoreContext = createContext(null)
+export const StoreContext: Context<IRootStore | undefined> = createContext(store)
 
 export function useStore() {
-  const context = useContext(StoreContext)
+  const context: IRootStore | undefined = useContext(StoreContext)
   if (context === undefined) {
     throw new Error('useStore must be used within StoreProvider')
   }
@@ -29,13 +31,12 @@ export function useStore() {
   return context
 }
 
-export function StoreProvider({ children, initialData }) {
-  const store = initializeStore(initialData)
-
+export function StoreProvider({ children, initialData }: AppProps) {
+  const store: IRootStore = initializeStore(initialData)
   return <StoreContext.Provider value={store}>{children}</StoreContext.Provider>
 }
 
-function initializeStore(initialData = null) {
+function initializeStore(initialData: IHydrate | undefined) {
   const _store: IRootStore = store ?? new RootStore()
   // If your page has Next.js data fetching methods that use a Mobx store, it will
   // get hydrated here, check `pages/ssg.js` and `pages/ssr.js` for more details

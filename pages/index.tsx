@@ -1,10 +1,12 @@
 import { observer } from 'mobx-react-lite'
 import { useStore } from '../store'
 import Link from 'next/link'
+import { IRootStore } from '../interfaces'
+import { FC, Props } from 'react'
 
-const Home = observer(function Page(props) {
+const Home: FC<Object> = observer(function Page(props) {
   // use store from the store context
-  const rootStore = useStore()
+  const rootStore: IRootStore = useStore()
 
   return (
     <div>
@@ -19,5 +21,13 @@ const Home = observer(function Page(props) {
     </div>
   )
 })
+
+// export function getServerSideProps() {
+//   return { props: { initialData: { uiStore: { input: 'server-side input' } } } }
+// }
+
+// export function getStaticProps() {
+//   return { props: { initialData: { uiStore: { input: 'server-side input' } } } }
+// }
 
 export default Home

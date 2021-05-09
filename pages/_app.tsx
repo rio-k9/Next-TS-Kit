@@ -1,7 +1,7 @@
-import { StoreProvider } from '../store'
-import { useEffect } from 'react';
+import { StoreProvider } from '../store';
+import { AppProps } from 'next/dist/next-server/lib/router/router';
 
-export default function App({ Component, pageProps }) {
+export default function App({ Component, pageProps }: AppProps) {
   return (
     <StoreProvider {...pageProps}>
       <Component {...pageProps} />

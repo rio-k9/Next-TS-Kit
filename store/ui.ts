@@ -5,21 +5,18 @@ import { IUiStore } from '../interfaces'
 enableStaticRendering(typeof window === 'undefined')
 
 export class UiStore implements IUiStore {
-  input = ''
+  input: string = ''
 
   constructor() {
     makeAutoObservable(this)
   }
 
-  @action userInput = (input) => {
-    console.log(input)
+  @action userInput = (input: string): void => {
     this.input = input
   }
 
-  @action hydrate = (data) => {
+  @action hydrate = (data: IUiStore | undefined): void => {
     if (!data) return
-    Object.keys(data).forEach(k => {
-      this[k] = data[k]
-    })
+    this.input = data.input
   }
 }
