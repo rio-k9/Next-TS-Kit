@@ -1,5 +1,5 @@
 import { fullpageApi } from '@fullpage/react-fullpage'
-import { action, makeAutoObservable } from 'mobx'
+import { action, computed, makeAutoObservable, autorun } from 'mobx'
 import { enableStaticRendering } from 'mobx-react-lite'
 import { IUiStore } from '../types'
 
@@ -7,6 +7,9 @@ enableStaticRendering(typeof window === 'undefined')
 
 export class UiStore implements IUiStore {
   input: string = ''
+  fc?: fullpageApi
+  activeSlide: number = 0
+
   constructor() {
     makeAutoObservable(this)
   }
@@ -20,8 +23,11 @@ export class UiStore implements IUiStore {
     this.input = data.input
   }
 
-  @action setFc = (fullpageApi) => {
+  @action setFc = (fullpageApi: fullpageApi) => {
     this.fc = fullpageApi
-    console.log(this.fc)
+  }
+
+  @action setActiveSlide = (i: number) => {
+    this.activeSlide = i
   }
 }

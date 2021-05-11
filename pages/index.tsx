@@ -14,18 +14,21 @@ const Home: NextPage = observer((): JSX.Element => {
 
   return (
     <ReactFullpage
+      onLeave={(origin, destination, direction) => {
+        rootStore.uiStore.setActiveSlide(destination.index)
+      }}
       render={({ fullpageApi }) => {
         rootStore.uiStore.setFc(fullpageApi)
         return (
           <Fragment>
             <ReactFullpage.Wrapper>
               {[<Hero />, <About />, <Releases />].map((c, i) => (
-                <div key={`section-${i}`} className="section">
+                <div key={`section-${i}`} className={`section section--${i}`}>
                   {c}
                 </div>
               ))}
             </ReactFullpage.Wrapper>
-          </Fragment>
+          </Fragment >
         )
       }
 

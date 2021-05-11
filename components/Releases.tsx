@@ -14,7 +14,7 @@ const Releases: FC = observer((): JSX.Element => {
   return (
     <Container id="releases" className={classes.container} max-width="xl">
       <Typography variant="h1" color="primary">
-        Hello there! 3
+        Hello there! 3 <button onClick={(e) => { console.log(rootStore.uiStore.activeSlide) }}>click</button>
       </Typography>
     </Container>
 

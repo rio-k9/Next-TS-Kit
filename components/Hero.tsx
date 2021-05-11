@@ -14,7 +14,7 @@ const Hero: FC = observer((): JSX.Element => {
   return (
     <Container id="about" className={classes.container}>
       <Typography variant="h1" color="primary">
-        Hello there! 1
+        Hello there! 1 <button onClick={(e) => { console.log(rootStore.uiStore.activeSlide) }}>click</button>
       </Typography>
     </Container>
 

@@ -8,21 +8,21 @@ export interface ITrackStore {
 
 export interface IUiStore {
   input: string,
+  activeSlide: number,
+  fc?: fullpageApi,
   userInput: Function,
-  hydrate: Function
+  hydrate: Function,
+  setFc: Function,
+  setActiveSlide: Function
 }
 
 export interface IRootStore {
   uiStore: IUiStore,
   trackStore: ITrackStore,
-  hydrate: Function,
+  hydrate: Function
 }
 
 export interface IHydrate {
   uiStore: IUiStore | null,
   trackStore: ITrackStore | null
-}
-
-export interface IHeader extends JSX.Element {
-  fp: fullpageApi
 }
