@@ -1,7 +1,7 @@
 import { Context, createContext, ReactNode, useContext } from 'react'
 import { UiStore } from './ui'
 import { TrackStore } from './track'
-import { IHydrate, IRootStore } from '../interfaces';
+import { IHydrate, IRootStore } from '../types';
 import { NextPage } from 'next';
 import { AppProps } from 'next/dist/next-server/lib/router/router';
 

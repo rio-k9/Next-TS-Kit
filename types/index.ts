@@ -1,4 +1,4 @@
-import { NextPageContext } from "next";
+import { fullpageApi } from "@fullpage/react-fullpage";
 
 export interface ITrackStore {
   input: string,
@@ -21,4 +21,8 @@ export interface IRootStore {
 export interface IHydrate {
   uiStore: IUiStore | null,
   trackStore: ITrackStore | null
+}
+
+export interface IHeader extends JSX.Element {
+  fp: fullpageApi
 }

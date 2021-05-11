@@ -1,6 +1,6 @@
 import { action, makeAutoObservable } from 'mobx'
 import { enableStaticRendering } from 'mobx-react-lite'
-import { IHydrate, ITrackStore } from '../interfaces'
+import { IHydrate, ITrackStore } from '../types'
 
 enableStaticRendering(typeof window === 'undefined')
 

@@ -1,8 +1,8 @@
 import { StoreProvider } from '../store';
 import { AppProps } from 'next/dist/next-server/lib/router/router';
-import Header from '../components/Header';
 import { Fragment, useEffect } from 'react'
 import Head from 'next/head';
+import Header from '../components/Header';
 export default function App({ Component, pageProps }: AppProps) {
 
   useEffect(() => {
@@ -20,6 +20,7 @@ export default function App({ Component, pageProps }: AppProps) {
         <meta name="viewport" content="minimum-scale=1, initial-scale=1, width=device-width" />
       </Head>
       <StoreProvider {...pageProps}>
+
         <Header />
         <Component {...pageProps} />
       </StoreProvider>
