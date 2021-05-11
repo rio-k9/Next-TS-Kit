@@ -1,3 +1,5 @@
+import { NextPageContext } from "next";
+
 export interface ITrackStore {
   input: string,
   userInput: Function,
