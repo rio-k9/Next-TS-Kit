@@ -4,18 +4,19 @@ import { IRootStore } from '../types'
 import { FC } from 'react'
 import { Container, Typography } from '@material-ui/core'
 import useStyle from '../style'
+import { WhiteTypography } from '../style/theme'
 
-const Releases: FC = observer((): JSX.Element => {
+const Releases: FC = observer((props): JSX.Element => {
 
-  const classes = useStyle()
+  const classes = useStyle(props)
 
   const rootStore: IRootStore = useStore()
 
   return (
-    <Container id="releases" className={classes.container} max-width="xl">
-      <Typography variant="h1" color="primary">
-        Hello there! 3 <button onClick={(e) => { console.log(rootStore.uiStore.activeSlide) }}>click</button>
-      </Typography>
+    <Container className={`${classes.container} ${classes.flexCenter}`}>
+      <WhiteTypography variant="h1" color="primary">
+        RELEASES <button onClick={(e) => { console.log(rootStore.uiStore.activeSlide) }}>click</button>
+      </WhiteTypography>
     </Container>
 
   )

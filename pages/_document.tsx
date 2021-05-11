@@ -8,8 +8,8 @@ class NextDocument extends Document {
       <Html lang="en">
         <Head>
           {/* <meta name="theme-color" content={theme.palette.primary.main} /> */}
-
-          <link rel="stylesheet" href="https://fonts.googleapis.com/css2?family=Open+Sans:wght@300;400;600;700&display=swap" />
+          <link rel="preconnect" href="https://fonts.gstatic.com" />
+          <link href="https://fonts.googleapis.com/css2?family=Montserrat&display=swap" rel="stylesheet" />
         </Head>
         <body>
           <Main />

@@ -8,9 +8,11 @@ import { Fragment, useEffect } from 'react';
 import Header from '../components/Header';
 import { IRootStore } from '../types';
 import { useStore } from '../store';
+import useStyle from '../style';
 
-const Home: NextPage = observer((): JSX.Element => {
+const Home: NextPage = observer((props): JSX.Element => {
   const rootStore: IRootStore = useStore()
+  const classes = useStyle(props)
 
   return (
     <ReactFullpage
@@ -22,18 +24,19 @@ const Home: NextPage = observer((): JSX.Element => {
         return (
           <Fragment>
             <ReactFullpage.Wrapper>
-              {[<Hero />, <About />, <Releases />].map((c, i) => (
-                <div key={`section-${i}`} className={`section section--${i}`}>
-                  {c}
-                </div>
-              ))}
+              <div className={`section ${classes.section0}`}>
+                <Hero />
+              </div>
+              <div className={`section ${classes.section1}`}>
+                <About />
+              </div>
+              <div className={`section ${classes.section2}`}>
+                <Releases />
+              </div>
             </ReactFullpage.Wrapper>
           </Fragment >
         )
-      }
-
-
-      }
+      }}
     />
   )
 })
