@@ -15,7 +15,7 @@ const Releases: FC = observer((props): JSX.Element => {
   return (
     <Container className={`${classes.container} ${classes.flexCenter}`}>
       <WhiteTypography variant="h1" color="primary">
-        RELEASES <button onClick={(e) => { console.log(rootStore.uiStore.activeSlide) }}>click</button>
+        RELEASES
       </WhiteTypography>
     </Container>
 

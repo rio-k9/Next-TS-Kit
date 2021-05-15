@@ -9,6 +9,11 @@ export class UiStore implements IUiStore {
   input: string = ''
   fc?: fullpageApi
   activeSlide: number = 0
+  logoActive = false
+  buttonsActive = {
+    hero: true,
+    about: false,
+  }
 
   constructor() {
     makeAutoObservable(this)
@@ -27,7 +32,40 @@ export class UiStore implements IUiStore {
     this.fc = fullpageApi
   }
 
+  @action setLogoState = (bool) => {
+    this.logoActive = bool
+  }
+
+  @action setButtonState = (i: number) => {
+    const n = i
+    if (n === 1) {
+      this.buttonsActive.hero = false
+      setTimeout(() => {
+        this.buttonsActive.about = true
+      }, 1000)
+    }
+    else {
+      this.buttonsActive.hero = (n === 0)
+      this.buttonsActive.about = (n === 1)
+    }
+  }
+
   @action setActiveSlide = (i: number) => {
+    if (i === 0) {
+      this.buttonsActive.hero = true
+    }
+    else if (i === 1) {
+      this.buttonsActive.about = true
+    }
     this.activeSlide = i
   }
+
+  @action moveTo = (i: number) => {
+    this.setButtonState(i - 1)
+    setTimeout(() => {
+      this.fc?.moveTo(i)
+    }, 1000)
+
+  }
+
 }

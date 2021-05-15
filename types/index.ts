@@ -10,10 +10,15 @@ export interface IUiStore {
   input: string,
   activeSlide: number,
   fc?: fullpageApi,
+  buttonsActive: {
+    hero: boolean,
+    about: boolean
+  },
   userInput: Function,
   hydrate: Function,
   setFc: Function,
-  setActiveSlide: Function
+  setActiveSlide: Function,
+  moveTo: Function
 }
 
 export interface IRootStore {

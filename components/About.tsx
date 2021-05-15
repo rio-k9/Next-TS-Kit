@@ -2,9 +2,10 @@ import { observer } from 'mobx-react-lite'
 import { useStore } from '../store'
 import { IRootStore } from '../types'
 import { FC } from 'react'
-import { Container, Typography } from '@material-ui/core'
+import { Button, Container, Typography } from '@material-ui/core'
 import useStyle from '../style'
 import { WhiteTypography } from '../style/theme'
+import ParticleEffectButton from 'react-particle-effect-button'
 
 const About: FC = observer((props): JSX.Element => {
 
@@ -14,9 +15,19 @@ const About: FC = observer((props): JSX.Element => {
 
   return (
     <Container className={`${classes.container} ${classes.flexCenter}`}>
-      <WhiteTypography variant="h1">
-        ABOUT <button onClick={(e) => { console.log(rootStore.uiStore.activeSlide) }}>click</button>
-      </WhiteTypography>
+      <ParticleEffectButton
+        color='#ffffff'
+        direction="left"
+        type="rectangle"
+        hidden={!rootStore.uiStore.buttonsActive.about}
+        duration={900}
+
+      >
+        <Button
+          onClick={() => { rootStore?.uiStore?.moveTo((3)) }} variant="contained">
+          SEE HIS MUSIC
+       </Button>
+      </ParticleEffectButton>
     </Container>
 
   )
