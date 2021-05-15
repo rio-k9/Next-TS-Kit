@@ -1,21 +1,7 @@
 import { makeStyles } from "@material-ui/core"
 
 const useStyle = makeStyles(theme => ({
-  container: {
-    height: '100vh',
-    paddingTop: '100px',
-    position: 'relative'
-  },
-  heroGrid: {
-    position: 'absolute',
-    top: '40%',
-    left: '50%',
-    transform: 'translate(-50%, -40%)',
-  },
-  heroImageBox: {
-    width: '400px',
-    paddingBottom: '6rem',
-  },
+
   navBar: {
     backgroundColor: 'transparent',
     height: '100px',
@@ -81,15 +67,66 @@ const useStyle = makeStyles(theme => ({
       animation: '$navLinkActive .3s ease-in-out'
     }
   },
-  'section0': {
-    background: 'url("/crowdwallpaper.jpg")'
+  container: {
+    height: '100vh',
+    position: 'relative',
+    paddingTop: '100px'
   },
-  'section1': {
-    background: '#001f29'
+  contentContainer: {
+    padding: '6rem 0',
+    height: '100%',
   },
-  'section2': {
-    background: 'url("/colorwallpaper.jpg")'
+  contentBox: {
+    background: 'rgba(0, 0, 0, .9)',
+    padding: '12rem 0'
   },
+  buttonBox: {
+    textAlign: 'center'
+  },
+  buttonHero: {
+    fontSize: '1.1rem',
+    letterSpacing: '.2rem',
+    padding: '1rem 1.5rem'
+  },
+  buttonAbout: {
+    fontSize: '.8rem',
+    letterSpacing: '.2rem',
+    padding: '.5rem 1rem',
+    margin: 'auto'
+  },
+  heroGrid: {
+    position: 'absolute',
+    top: '40%',
+    left: '50%',
+    transform: 'translate(-50%, -40%)',
+  },
+  heroImageBox: {
+    width: '400px',
+    paddingBottom: '6rem',
+  },
+  'background': {
+    height: '100vh',
+    width: '100vw',
+    position: 'absolute',
+    animation: '$slowZoom 40s linear infinite',
+    top: '50%',
+    left: '50%',
+    transform: 'translate(-50%, -50%)',
+    zIndex: -1000
+  },
+  'background0': {
+    background: 'url("/crowdwallpaper.jpg") center center no-repeat',
+    backgroundSize: 'cover'
+  },
+  'background1': {
+    background: 'url("/studiowallpaper.jpg") center center no-repeat',
+    backgroundSize: 'cover'
+  },
+  'background2': {
+    background: 'url("/colorwallpaper.jpg") center center no-repeat',
+    backgroundSize: 'cover'
+  },
+
   flexBetween: {
     display: 'flex',
     justifyContent: 'space-between'
@@ -103,11 +140,6 @@ const useStyle = makeStyles(theme => ({
     display: 'flex',
     justifyContent: 'center',
   },
-  button: {
-    fontSize: '1.1rem',
-    letterSpacing: '.2rem',
-    padding: '1rem 1.5rem'
-  },
   '@keyframes navLinkActive': {
     'from': {
       left: '3rem',
@@ -119,6 +151,17 @@ const useStyle = makeStyles(theme => ({
       right: '0.8rem',
       opacity: '1'
     }
+  },
+  '@keyframes slowZoom': {
+    '0': {
+      transform: 'translate(-50%, -50%) scale(1)'
+    },
+    '50%': {
+      transform: 'translate(-50%, -50%) scale(1.1)'
+    },
+    '100%': {
+      transform: 'translate(-50%, -50%) scale(1)'
+    },
   }
 }))
 

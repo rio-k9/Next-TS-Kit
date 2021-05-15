@@ -24,15 +24,15 @@ const Home: NextPage = observer((props): JSX.Element => {
         return (
           <Fragment>
             <ReactFullpage.Wrapper>
-              <div className={`section ${classes.section0}`}>
-                <Hero />
-              </div>
-              <div className={`section ${classes.section1}`}>
-                <About />
-              </div>
-              <div className={`section ${classes.section2}`}>
-                <Releases />
-              </div>
+              {[<Hero />, <About />, <Releases />].map((c, i) => (
+                <div key={`section${i}`}
+                  className="section"
+                  style={{
+                    overflow: 'hidden'
+                  }}>
+                  {c}
+                </div>
+              ))}
             </ReactFullpage.Wrapper>
           </Fragment >
         )
