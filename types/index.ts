@@ -14,6 +14,8 @@ export interface IUiStore {
     hero: boolean,
     about: boolean
   },
+  activeTrack: number,
+  trackHover: Function,
   userInput: Function,
   hydrate: Function,
   setFc: Function,

@@ -78,7 +78,12 @@ const useStyle = makeStyles(theme => ({
   },
   contentBox: {
     background: 'rgba(0, 0, 0, .9)',
-    padding: '12rem 0'
+  },
+  portrait: {
+    width: "80%",
+  },
+  portraitImg: {
+    borderRadius: '2%'
   },
   buttonBox: {
     textAlign: 'center'
@@ -94,6 +99,36 @@ const useStyle = makeStyles(theme => ({
     padding: '.5rem 1rem',
     margin: 'auto'
   },
+  releasesHeader: {
+    position: 'absolute',
+    top: '140px'
+  },
+  trackTile: {
+    textAlign: 'center',
+    background: 'transparent',
+    cursor: 'pointer',
+    position: 'relative',
+    overflow: 'hidden'
+  },
+  trackImage: {
+    margin: '0 auto 0 auto !important',
+    transition: 'margin .2s ease-in-out',
+    borderRadius: '2%',
+    '&.active': {
+      margin: '-12% auto 0 auto !important'
+    }
+  },
+  trackDescription: {
+    position: 'absolute',
+    bottom: '-35%',
+    left: '0',
+    right: '0',
+    background: '#6b0e00',
+    transition: 'bottom .2s ease-in-out',
+    '&.active': {
+      bottom: '0'
+    }
+  },
   heroGrid: {
     position: 'absolute',
     top: '40%',
@@ -108,13 +143,13 @@ const useStyle = makeStyles(theme => ({
     height: '100vh',
     width: '100vw',
     position: 'absolute',
-    animation: '$slowZoom 40s linear infinite',
     top: '50%',
     left: '50%',
     transform: 'translate(-50%, -50%)',
     zIndex: -1000
   },
   'background0': {
+    animation: '$slowZoom 40s linear infinite',
     background: 'url("/crowdwallpaper.jpg") center center no-repeat',
     backgroundSize: 'cover'
   },
@@ -123,6 +158,7 @@ const useStyle = makeStyles(theme => ({
     backgroundSize: 'cover'
   },
   'background2': {
+    animation: '$slowZoom 40s linear infinite',
     background: 'url("/colorwallpaper.jpg") center center no-repeat',
     backgroundSize: 'cover'
   },

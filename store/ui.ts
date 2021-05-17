@@ -10,6 +10,7 @@ export class UiStore implements IUiStore {
   fc?: fullpageApi
   activeSlide: number = 0
   logoActive = false
+  activeTrack: number = 99
   buttonsActive = {
     hero: true,
     about: false,
@@ -32,7 +33,11 @@ export class UiStore implements IUiStore {
     this.fc = fullpageApi
   }
 
-  @action setLogoState = (bool) => {
+  @action trackHover = (id: number) => {
+    this.activeTrack = id
+  }
+
+  @action setLogoState = (bool: boolean) => {
     this.logoActive = bool
   }
 

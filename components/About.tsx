@@ -6,6 +6,7 @@ import { Button, Container, Typography, Box, Grid } from '@material-ui/core'
 import useStyle from '../style'
 import { WhiteTypography } from '../style/theme'
 import ParticleEffectButton from 'react-particle-effect-button'
+import Image from 'next/image'
 
 const About: FC = observer((props): JSX.Element => {
 
@@ -17,10 +18,13 @@ const About: FC = observer((props): JSX.Element => {
     <Fragment>
       <Box className={`${classes.background} ${classes.background1}`}>
       </Box>
-      <Box className={`${classes.contentBox}`}>
+      <Box className={`${classes.contentBox}`} py={20}>
         <Container>
           <Grid container spacing={5}>
             <Grid item xs>
+              <Box mx="auto" className={classes.portrait}>
+                <Image className={classes.portraitImg} src="/portrait.jpg" layout="responsive" width={400} height={400} />
+              </Box>
             </Grid>
             <Grid item xs={7}>
 
@@ -46,7 +50,6 @@ const About: FC = observer((props): JSX.Element => {
                     onClick={() => { rootStore?.uiStore?.moveTo((3)) }} variant="contained">
                     LATEST MUSIC
                 </Button>
-
                 </Box>
               </ParticleEffectButton>
             </Grid>
